@@ -13,8 +13,8 @@ public class TestBlogg {
 	public void testStandardConstructor() {
 		Blogg samling = new Blogg();
 		
-		assertEquals(samling.getAntall(),0);
-		assertEquals(samling.getSamling().length,20);
+		assertEquals(samling.getCount(),0);
+		assertEquals(samling.getPosts().length,20);
 		
 	}
 
@@ -22,8 +22,8 @@ public class TestBlogg {
 	public void testConstructor() {
 		Blogg samling = new Blogg(40);
 		
-		assertEquals(samling.getAntall(),0);
-		assertEquals(samling.getSamling().length,40);
+		assertEquals(samling.getCount(),0);
+		assertEquals(samling.getPosts().length,40);
 	}
 	
 	
@@ -35,17 +35,17 @@ public class TestBlogg {
 		TInnlegg innlegg2 = new TInnlegg(2,"Oline Olsen","24-10");
 		TInnlegg innlegg3 = new TInnlegg(3,"Oda Olsen","24-10");
 		
-		assertTrue(samling.leggTil(innlegg1));
-		assertTrue(samling.leggTil(innlegg2));
+		assertTrue(samling.add(innlegg1));
+		assertTrue(samling.add(innlegg2));
 		
-		assertEquals(samling.getAntall(),2);
+		assertEquals(samling.getCount(),2);
 		
-		assertTrue(samling.finnInnlegg(innlegg1) >= 0);
-		assertTrue(samling.finnInnlegg(innlegg3) < 0);
+		assertTrue(samling.findPost(innlegg1) >= 0);
+		assertTrue(samling.findPost(innlegg3) < 0);
 		
-		assertTrue(samling.finnes(innlegg1));
-		assertTrue(samling.finnes(innlegg2));
-		assertFalse(samling.finnes(innlegg3));
+		assertTrue(samling.exists(innlegg1));
+		assertTrue(samling.exists(innlegg2));
+		assertFalse(samling.exists(innlegg3));
 		
 	}
 	
@@ -57,14 +57,14 @@ public class TestBlogg {
 		TInnlegg innlegg1 = new TInnlegg(1,"Ole Olsen","23-10");
 		TInnlegg innlegg2 = new TInnlegg(2,"Oline Olsen","24-10");
 		
-		samling1.leggTil(innlegg1);
-		samling1.leggTil(innlegg2);
+		samling1.add(innlegg1);
+		samling1.add(innlegg2);
 		
-		samling2.leggTil(innlegg1);
-		samling2.leggTil(innlegg2);
+		samling2.add(innlegg1);
+		samling2.add(innlegg2);
 		
-		assertTrue(samling1.ledigPlass());
-		assertFalse(samling2.ledigPlass());
+		assertTrue(samling1.freeSpace());
+		assertFalse(samling2.freeSpace());
 	}
 	
 	@Test
@@ -74,18 +74,18 @@ public class TestBlogg {
 		TInnlegg innlegg1 = new TInnlegg(1,"Ole Olsen","23-10");
 		TInnlegg innlegg2 = new TInnlegg(2,"Oline Olsen","24-10");
 
-		samling.leggTil(innlegg1);
-		samling.leggTil(innlegg2);
+		samling.add(innlegg1);
+		samling.add(innlegg2);
 		
-		assertEquals(samling.getAntall(),2);
-		assertFalse(samling.ledigPlass());
+		assertEquals(samling.getCount(),2);
+		assertFalse(samling.freeSpace());
 		
-		samling.utvid();
+		samling.expand();
 		
-		assertTrue(samling.finnes(innlegg1));
-		assertTrue(samling.finnes(innlegg2));
-		assertEquals(samling.getAntall(),2);
-		assertTrue(samling.ledigPlass());	
+		assertTrue(samling.exists(innlegg1));
+		assertTrue(samling.exists(innlegg2));
+		assertEquals(samling.getCount(),2);
+		assertTrue(samling.freeSpace());	
 	}
 	
 	@Test
@@ -96,33 +96,33 @@ public class TestBlogg {
 		TInnlegg innlegg1 = new TInnlegg(1,"Ole Olsen","23-10");
 		TInnlegg innlegg2 = new TInnlegg(2,"Oline Olsen","24-10");
 
-		samling.leggTil(innlegg1);
-		samling.leggTil(innlegg2);
+		samling.add(innlegg1);
+		samling.add(innlegg2);
 		
-		assertEquals(2,samling.getAntall());
-		assertTrue(samling.finnes(innlegg1));
-		assertTrue(samling.finnes(innlegg2));
+		assertEquals(2,samling.getCount());
+		assertTrue(samling.exists(innlegg1));
+		assertTrue(samling.exists(innlegg2));
 		
-		samling.slett(innlegg2);
+		samling.delete(innlegg2);
 		
-		assertEquals(1,samling.getAntall());
-		assertTrue(samling.finnes(innlegg1));
-		assertFalse(samling.finnes(innlegg2));
+		assertEquals(1,samling.getCount());
+		assertTrue(samling.exists(innlegg1));
+		assertFalse(samling.exists(innlegg2));
 	}
 	
 	@Test
 	public void testtoString() {
 		Blogg samling = new Blogg(2);
 		
-		Tekst innlegg1 = new Tekst(1,"Ole Olsen","23-10","en tekst");
-		Bilde innlegg2 = new Bilde(2,"Oline Olsen","24-10","et bilde","http://www.picture.com/oo.jpg");
+		Text innlegg1 = new Text(1,"Ole Olsen","23-10","en tekst");
+		Image innlegg2 = new Image(2,"Oline Olsen","24-10","et bilde","http://www.picture.com/oo.jpg");
 
-		samling.leggTil(innlegg1);
-		samling.leggTil(innlegg2);
+		samling.add(innlegg1);
+		samling.add(innlegg2);
 		
 		String str = "2\n" + 
-				"TEKST\n1\nOle Olsen\n23-10\n0\nen tekst\n" + 
-				"BILDE\n2\nOline Olsen\n24-10\n0\net bilde\nhttp://www.picture.com/oo.jpg\n";
+				"TEXT\n1\nOle Olsen\n23-10\n0\nen tekst\n" + 
+				"IMAGE\n2\nOline Olsen\n24-10\n0\net bilde\nhttp://www.picture.com/oo.jpg\n";
 		
 		assertEquals(str,samling.toString());
 		

@@ -2,24 +2,29 @@ package no.hvl.dat100.jplab11.oppgave1;
 
 import no.hvl.dat100.jplab11.common.TODO;
 
-public abstract class Innlegg {
+/**
+ * Oppgave 1:
+ * https://github.com/dat100hib/dat100public/blob/master/programmering/jplab11/JP11.md#oppgave-1---abstrakt-klasse
+ */
+
+public abstract class Post {
 
 	private int id;
 	private String userName;
 	private String date;
 	private int likes;
 	
-	public Innlegg() {
+	public Post() {
 		
 	}
 	
-	public Innlegg(int id, String userName, String date) {
+	public Post(int id, String userName, String date) {
 		this.id = id;
 		this.userName = userName;
 		this.date = date;
 	}
 
-	public Innlegg(int id, String userName, String date, int likes) {
+	public Post(int id, String userName, String date, int likes) {
 		this.id = id;
 		this.userName = userName;
 		this.date = date;
@@ -30,16 +35,16 @@ public abstract class Innlegg {
 		return userName;
 	}
 
-	public void setBruker(String newUserName) {
-		userName = newUserName;
+	public void setBruker(String userName) {
+		this.userName = userName;
 	}
 
 	public String getDato() {
 		return date;
 	}
 
-	public void setDato(String newDate) {
-		date = newDate;
+	public void setDato(String date) {
+		this.date = date;
 	}
 
 	public int getId() {
@@ -54,8 +59,8 @@ public abstract class Innlegg {
 		likes++;
 	}
 	
-	public boolean erLik(Innlegg innlegg) {
-		return innlegg != null && id == innlegg.id;
+	public boolean erLik(Post other) {
+		return other != null && id == other.id;
 	}
 	
 	@Override

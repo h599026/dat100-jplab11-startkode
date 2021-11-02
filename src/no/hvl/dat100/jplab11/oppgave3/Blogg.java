@@ -2,71 +2,114 @@ package no.hvl.dat100.jplab11.oppgave3;
 
 import no.hvl.dat100.jplab11.common.TODO;
 import no.hvl.dat100.jplab11.oppgave1.*;
+import no.hvl.dat100.jplab11.oppgave2.Image;
+import no.hvl.dat100.jplab11.oppgave2.Text;
 
+/**
+ * Oppgave 3
+ * https://github.com/dat100hib/dat100public/blob/master/programmering/jplab11/JP11.md#oppgave-3---objektsamling
+ */
 public class Blogg {
 
-	// TODO: objektvariable 
+	String n = "\n";
+	Post[] posts;
+	int count;
 
 	public Blogg() {
-		throw new UnsupportedOperationException(TODO.constructor("Blogg"));
+		posts = new Post[20];
 	}
 
-	public Blogg(int lengde) {
-		throw new UnsupportedOperationException(TODO.constructor("Blogg"));
+	public Blogg(int legth) {
+		posts = new Post[legth];
 	}
 
-	public int getAntall() {
-		throw new UnsupportedOperationException(TODO.method());
-	}
-	
-	public Innlegg[] getSamling() {
-		throw new UnsupportedOperationException(TODO.method());
-
-	}
-	
-	public int finnInnlegg(Innlegg innlegg) {
-
-		throw new UnsupportedOperationException(TODO.method());
+	public int getCount() {
+		return count;
 	}
 
-	public boolean finnes(Innlegg innlegg) {
-		throw new UnsupportedOperationException(TODO.method());
+	public Post[] getPosts() {
+		return posts;
 	}
 
-	public boolean ledigPlass() {
-		throw new UnsupportedOperationException(TODO.method());
-
+	public int findPost(Post post) {
+		for (int i = 0; i <= count; i++) {
+			if (post.erLik(posts[i])) {
+				return i;
+			}
+		}
+		return -1;
 	}
-	
-	public boolean leggTil(Innlegg innlegg) {
 
-		throw new UnsupportedOperationException(TODO.method());
+	public boolean exists(Post post) {
+		for (int i = 0; i <= count; i++) {
+			if (post.erLik(posts[i])) {
+				return true;
+			}
+		}
+		return false;
 	}
-	
+
+	public boolean freeSpace() {
+		return count < posts.length;
+	}
+
+	public boolean add(Post post) {
+		if(!freeSpace() || exists(post)) return false;
+		posts[count++] = post;
+		return true;
+	}
+
 	public String toString() {
-		throw new UnsupportedOperationException(TODO.method());
+		String s = count + n;
+		for (Post post : posts){
+			s += post.toString();
+		}
+		return s;
 	}
 
 	// valgfrie oppgaver nedenfor
-	
-	public void utvid() {
-		throw new UnsupportedOperationException(TODO.method());
-	}
-	
-	public boolean leggTilUtvid(Innlegg innlegg) {
 
-		throw new UnsupportedOperationException(TODO.method());
-		
+	public void expand() {
+		Post[] newPosts = new Post[posts.length * 2];
+		for (int i = 0; i < count; i++){
+			newPosts[i] = posts[i];
+		}
+		posts = newPosts;
 	}
-	
-	public boolean slett(Innlegg innlegg) {
-		
-		throw new UnsupportedOperationException(TODO.method());
+
+	public boolean addExpand(Post post) {
+		if (exists(post)) return false;
+		if (!freeSpace()) expand();
+		posts[count++] = post;
+		return true;
 	}
-	
+
+	public boolean delete(Post post) {
+
+		// TODO: Fix delete method
+
+		if(!exists(post)) return false;
+		int i = findPost(post) + 1;
+		while(i < count){
+			posts[i - 1] = posts[i--];
+		}
+		count--;
+		return true;
+	}
+
 	public int[] search(String keyword) {
-		
-		throw new UnsupportedOperationException(TODO.method());
-
+		int[] results = new int[count];
+		int hits = 0;
+		for (int i = 0; i <= count; i++){
+			if(!(posts[0] instanceof Text)) continue;
+			if(((Text)posts[i]).getTekst().contains(keyword)){
+				results[hits++] = posts[i].getId();
+			}
+		}
+		int[] shortResults = new int[hits];
+		for(int i = 0; i <= hits; i++){
+			shortResults[i] = results[i];
+		}
+		return shortResults;
 	}
 }

@@ -10,7 +10,7 @@ public class TestTekst {
 	
 	@Test
 	public void testConstructor1() {
-		Tekst tekst = new Tekst(1,"Ole Olsen", "23-10","en tekst");
+		Text tekst = new Text(1,"Ole Olsen", "23-10","en tekst");
 		
 		assertEquals("Ole Olsen",tekst.getBruker());
 		assertEquals(1,tekst.getId());
@@ -21,7 +21,7 @@ public class TestTekst {
 
 	@Test
 	public void testConstructor2() {
-		Tekst tekst = new Tekst(1,"Ole Olsen", "23-10",7,"en tekst");
+		Text tekst = new Text(1,"Ole Olsen", "23-10",7,"en tekst");
 		
 		assertEquals("Ole Olsen",tekst.getBruker());
 		assertEquals(1,tekst.getId());
@@ -32,7 +32,7 @@ public class TestTekst {
 	
 	@Test
 	public void testSet() {
-		Tekst tekst = new Tekst(1,"Ole Olsen", "23-10","en tekst");
+		Text tekst = new Text(1,"Ole Olsen", "23-10","en tekst");
 		
 		tekst.setTekst("ny tekst");
 
@@ -42,9 +42,9 @@ public class TestTekst {
 	
 	@Test
 	public void testToString() {
-		Tekst tekst = new Tekst(1,"Ole Olsen", "23-10","en tekst");
+		Text tekst = new Text(1,"Ole Olsen", "23-10","en tekst");
 		
-		String str = "TEKST\n1\nOle Olsen\n23-10\n0\nen tekst\n";
+		String str = "TEXT\n1\nOle Olsen\n23-10\n0\nen tekst\n";
 		
 		assertEquals(str,tekst.toString());
 	}

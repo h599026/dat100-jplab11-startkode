@@ -11,7 +11,7 @@ public class TestBilde {
 
 	@Test
 	public void testConstructor1() {
-		Bilde bilde = new Bilde(1,"Ole Olsen", "23-10","et bilde","http://www.picture.com/oo.jpg");
+		Image bilde = new Image(1,"Ole Olsen", "23-10","et bilde","http://www.picture.com/oo.jpg");
 		
 		assertEquals("Ole Olsen",bilde.getBruker());
 		assertEquals(1, bilde.getId());
@@ -23,7 +23,7 @@ public class TestBilde {
 
 	@Test
 	public void testConstructor2() {
-		Bilde bilde = new Bilde(1,"Ole Olsen", "23-10",7,"et bilde","http://www.picture.com/oo.jpg");
+		Image bilde = new Image(1,"Ole Olsen", "23-10",7,"et bilde","http://www.picture.com/oo.jpg");
 		
 		assertEquals("Ole Olsen",bilde.getBruker());
 		assertEquals(1, bilde.getId());
@@ -35,7 +35,7 @@ public class TestBilde {
 
 	@Test
 	public void testSet() {
-		Bilde bilde = new Bilde(1,"Ole Olsen", "23-10","et bilde","http://www.picture.com/oo.jpg");
+		Image bilde = new Image(1,"Ole Olsen", "23-10","et bilde","http://www.picture.com/oo.jpg");
 	
 		bilde.setUrl("http://www.picture.com/new.jpg");
 		
@@ -44,9 +44,9 @@ public class TestBilde {
 
 	@Test
 	public void testToString() {
-		Bilde bilde = new Bilde(1,"Ole Olsen", "23-10","et bilde","http://www.picture.com/oo.jpg");
+		Image bilde = new Image(1,"Ole Olsen", "23-10","et bilde","http://www.picture.com/oo.jpg");
 		
-		String str = "BILDE\n1\nOle Olsen\n23-10\n0\net bilde\nhttp://www.picture.com/oo.jpg\n";
+		String str = "IMAGE\n1\nOle Olsen\n23-10\n0\net bilde\nhttp://www.picture.com/oo.jpg\n";
 		
 		assertEquals(str,bilde.toString(),str);
 	}

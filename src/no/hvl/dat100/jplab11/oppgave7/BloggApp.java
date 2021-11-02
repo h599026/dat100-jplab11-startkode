@@ -8,8 +8,8 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Date;
 
-import no.hvl.dat100.jplab11.oppgave2.Bilde;
-import no.hvl.dat100.jplab11.oppgave2.Tekst;
+import no.hvl.dat100.jplab11.oppgave2.Image;
+import no.hvl.dat100.jplab11.oppgave2.Text;
 import no.hvl.dat100.jplab11.oppgave3.Blogg;
 import no.hvl.dat100.jplab11.oppgave6.HtmlBlogg;
 
@@ -17,9 +17,9 @@ public class BloggApp {
 
 	public static String toHTML() {
 
-		Tekst innlegg1 = new Tekst(1, "Sven-Olai", "23-10",
+		Text innlegg1 = new Text(1, "Sven-Olai", "23-10",
 				"Lars, hva er status for den siste obligatoriske innleveringen?");
-		Bilde innlegg2 = new Bilde(2, "Lars", "24-10",
+		Image innlegg2 = new Image(2, "Lars", "24-10",
 				"Ser bra ut! - har lagt ved output-eksempel fra enhetstester",
 				"https://home.hvl.no/ansatte/lmkr/dat100/junitscreenshot.png");
 
@@ -29,8 +29,8 @@ public class BloggApp {
 
 		HtmlBlogg samling = new HtmlBlogg();
 
-		samling.leggTil(innlegg1);
-		samling.leggTil(innlegg2);
+		samling.add(innlegg1);
+		samling.add(innlegg2);
 
 		return samling.toString();
 	}

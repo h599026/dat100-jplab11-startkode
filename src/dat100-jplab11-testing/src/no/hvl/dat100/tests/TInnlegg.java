@@ -1,8 +1,8 @@
 package no.hvl.dat100.tests;
 
-import no.hvl.dat100.jplab11.oppgave1.Innlegg;
+import no.hvl.dat100.jplab11.oppgave1.Post;
 
-public class TInnlegg extends Innlegg {
+public class TInnlegg extends Post {
 	
 	public TInnlegg(int id, String bruker, String dato) {
 		super(id, bruker,dato);
