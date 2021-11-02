@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>dat100-jplab11-startkode</name>
+	<name>dat100-jplab11-testing</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -16,7 +16,7 @@
 	</natures>
 	<filteredResources>
 		<filter>
-			<id>1635856455865</id>
+			<id>1635856455905</id>
 			<name></name>
 			<type>30</type>
 			<matcher>

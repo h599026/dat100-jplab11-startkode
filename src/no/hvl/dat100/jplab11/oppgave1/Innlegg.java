@@ -3,69 +3,64 @@ package no.hvl.dat100.jplab11.oppgave1;
 import no.hvl.dat100.jplab11.common.TODO;
 
 public abstract class Innlegg {
-	
-	// TODO - deklarering av objektvariable
+
+	private int id;
+	private String userName;
+	private String date;
+	private int likes;
 	
 	public Innlegg() {
 		
 	}
 	
-	public Innlegg(int id, String bruker, String dato) {
-
-		// TODO 
-		throw new UnsupportedOperationException(TODO.constructor("Innlegg"));
+	public Innlegg(int id, String userName, String date) {
+		this.id = id;
+		this.userName = userName;
+		this.date = date;
 	}
 
-	public Innlegg(int id, String bruker, String dato, int likes) {
-
-		// TODO - START
-		
-		throw new UnsupportedOperationException(TODO.constructor("Innlegg"));
+	public Innlegg(int id, String userName, String date, int likes) {
+		this.id = id;
+		this.userName = userName;
+		this.date = date;
+		this.likes = likes;
 	}
 	
 	public String getBruker() {
-		
-		throw new UnsupportedOperationException(TODO.method());
-
+		return userName;
 	}
 
-	public void setBruker(String bruker) {
-		throw new UnsupportedOperationException(TODO.method());
+	public void setBruker(String newUserName) {
+		userName = newUserName;
 	}
 
 	public String getDato() {
-		throw new UnsupportedOperationException(TODO.method());
-		
+		return date;
 	}
 
-	public void setDato(String dato) {
-		throw new UnsupportedOperationException(TODO.method());
+	public void setDato(String newDate) {
+		date = newDate;
 	}
 
 	public int getId() {
-		throw new UnsupportedOperationException(TODO.method());
-
+		return id;
 	}
 
 	public int getLikes() {
-		throw new UnsupportedOperationException(TODO.method());
-
+		return likes;
 	}
 	
 	public void doLike () {
-		throw new UnsupportedOperationException(TODO.method());
+		likes++;
 	}
 	
 	public boolean erLik(Innlegg innlegg) {
-		throw new UnsupportedOperationException(TODO.method());
-
+		return innlegg != null && id == innlegg.id;
 	}
 	
 	@Override
 	public String toString() {
-		
-		throw new UnsupportedOperationException(TODO.method());
-				
+		return id + "\n" + userName + "\n" + date + "\n" + likes + "\n";
 	}
 	
 	// Metoden nedenfor er kun for valgfri oppgave 6
