@@ -1,7 +1,5 @@
 package no.hvl.dat100.jplab11.oppgave2;
 
-import no.hvl.dat100.jplab11.common.TODO;
-
 /**
  * Oppgave 2
  * https://github.com/dat100hib/dat100public/blob/master/programmering/jplab11/JP11.md#oppgave-2---subklasser
@@ -38,8 +36,6 @@ public class Image extends Text {
 
 	// Metoden nedenfor er kun for valgfri oppgave 6
 	public String toHTML() {
-		
-		throw new UnsupportedOperationException(TODO.method());
-				
+		return super.toHTML() + "<iframe scr=\"" + url + "\" height=\"600 width=\"800\"></iframe>\n";
 	}
 }

@@ -1,14 +1,13 @@
 package no.hvl.dat100.tests;
 
 import static org.junit.Assert.assertTrue;
-import static org.junit.jupiter.api.Assertions.*;
 
 
 import org.junit.jupiter.api.Test;
 
 import no.hvl.dat100.jplab11.oppgave2.Image;
 import no.hvl.dat100.jplab11.oppgave2.Text;
-import no.hvl.dat100.jplab11.oppgave4.SkrivBlogg;
+import no.hvl.dat100.jplab11.oppgave4.WriteBlogg;
 import no.hvl.dat100.jplab11.oppgave6.HtmlBlogg;
 
 class TestHtmlBlogg {
@@ -27,6 +26,6 @@ class TestHtmlBlogg {
 		samling.add(innlegg1);
 		samling.add(innlegg2);
 		
-		assertTrue(SkrivBlogg.skriv(samling, MAPPE, FILNAVN));
+		assertTrue(WriteBlogg.write(samling, MAPPE, FILNAVN));
 	}	
 }

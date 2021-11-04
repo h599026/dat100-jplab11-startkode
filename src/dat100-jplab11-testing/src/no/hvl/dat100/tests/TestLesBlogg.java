@@ -18,12 +18,12 @@ public class TestLesBlogg {
 	@Test
 	public void testles() {
 		
-		Blogg samling = LesBlogg.les(MAPPE,FILNAVN);
+		Blogg samling = LesBlogg.read(MAPPE,FILNAVN);
 
 		Text innlegg1 = new Text(1,"Ole Olsen","23-10","en tekst");
 		Image innlegg2 = new Image(2,"Oline Olsen","24-10","et bilde","http://www.picture.com/oo.jpg");
 		
-		assertEquals(samling.getCount(),2);
+		assertEquals(2,samling.getCount());
 		assertTrue(samling.exists(innlegg1));
 		assertTrue(samling.exists(innlegg2));
 		

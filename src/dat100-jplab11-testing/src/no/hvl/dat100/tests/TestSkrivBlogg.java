@@ -25,6 +25,6 @@ public class TestSkrivBlogg {
 		samling.add(innlegg1);
 		samling.add(innlegg2);
 		
-		assertTrue(SkrivBlogg.skriv(samling, MAPPE, FILNAVN));
+		assertTrue(WriteBlogg.write(samling, MAPPE, FILNAVN));
 	}	
 }

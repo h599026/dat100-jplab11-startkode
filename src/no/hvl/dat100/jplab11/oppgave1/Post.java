@@ -1,7 +1,5 @@
 package no.hvl.dat100.jplab11.oppgave1;
 
-import no.hvl.dat100.jplab11.common.TODO;
-
 /**
  * Oppgave 1:
  * https://github.com/dat100hib/dat100public/blob/master/programmering/jplab11/JP11.md#oppgave-1---abstrakt-klasse
@@ -70,8 +68,6 @@ public abstract class Post {
 	
 	// Metoden nedenfor er kun for valgfri oppgave 6
 	public String toHTML() {
-		
-		throw new UnsupportedOperationException(TODO.method());
-				
+		return "<h2>" + userName + "@" + date + " [" + likes + "]</h2>\n";	
 	}
 }

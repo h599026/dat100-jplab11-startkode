@@ -10,7 +10,6 @@ import java.util.Date;
 
 import no.hvl.dat100.jplab11.oppgave2.Image;
 import no.hvl.dat100.jplab11.oppgave2.Text;
-import no.hvl.dat100.jplab11.oppgave3.Blogg;
 import no.hvl.dat100.jplab11.oppgave6.HtmlBlogg;
 
 public class BloggApp {

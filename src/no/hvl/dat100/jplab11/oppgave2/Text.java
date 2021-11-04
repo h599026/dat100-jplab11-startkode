@@ -1,6 +1,5 @@
 package no.hvl.dat100.jplab11.oppgave2;
 
-import no.hvl.dat100.jplab11.common.TODO;
 import no.hvl.dat100.jplab11.oppgave1.*;
 
 /**
@@ -39,8 +38,6 @@ public class Text extends Post {
 	
 	// Metoden nedenfor er kun for valgfri oppgave 6
 	public String toHTML() {
-			
-		throw new UnsupportedOperationException(TODO.method());
-				
+		return super.toHTML() + "<p>" + text + "</p>\n";		
 	}
 }

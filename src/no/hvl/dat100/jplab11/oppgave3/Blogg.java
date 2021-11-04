@@ -1,8 +1,6 @@
 package no.hvl.dat100.jplab11.oppgave3;
 
-import no.hvl.dat100.jplab11.common.TODO;
 import no.hvl.dat100.jplab11.oppgave1.*;
-import no.hvl.dat100.jplab11.oppgave2.Image;
 import no.hvl.dat100.jplab11.oppgave2.Text;
 
 /**
@@ -61,8 +59,9 @@ public class Blogg {
 
 	public String toString() {
 		String s = count + n;
-		for (Post post : posts){
-			s += post.toString();
+		for (int i = 0; i < count; i++){
+			if(posts[i] != null)
+				s += posts[i].toString();
 		}
 		return s;
 	}
@@ -86,14 +85,12 @@ public class Blogg {
 
 	public boolean delete(Post post) {
 
-		// TODO: Fix delete method
-
 		if(!exists(post)) return false;
 		int i = findPost(post) + 1;
 		while(i < count){
-			posts[i - 1] = posts[i--];
+			posts[i - 1] = posts[i++];
 		}
-		count--;
+		posts[--count] = null;
 		return true;
 	}
 
@@ -112,4 +109,12 @@ public class Blogg {
 		}
 		return shortResults;
 	}
+
+    public String toHTML() {
+		String s = "";
+		for(int i = 0; i < count; i++){
+			s += posts[i].toHTML() + "<hr>";
+		}
+		return s;
+    }
 }
